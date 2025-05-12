@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles_tbl', function (Blueprint $table) {
-            $table->unsignedBigInteger('roleID', true);
-            $table->string('roleName', 50);
-        });
-    }
+        Schema::table('requests_tbl', function (Blueprint $table) {
+        $table->unsignedBigInteger('ownerID')->nullable()->after('requestID');
+    });
+}
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Schema::dropIfExists('roles_tbl');
-    }
+    public function down()
+{
+    Schema::table('requests_tbl', function (Blueprint $table) {
+        $table->dropColumn('ownerID');
+    });
+}
 };

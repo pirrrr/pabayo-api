@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('requests_tbl', function (Blueprint $table) {
             $table->foreign(['serviceID'], 'FK_requests_tbl_services_tbl')->references(['serviceID'])->on('services_tbl')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign(['ownerID'], 'FK_requests_tbl_users_tbl_3')->references(['userID'])->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign(['statusID'], 'FK_requests_tbl_status_table')->references(['statusID'])->on('status_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign(['customerID'], 'FK_requests_tbl_users_tbl')->references(['userID'])->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign(['courierID'], 'FK_requests_tbl_users_tbl_2')->references(['userID'])->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
@@ -26,6 +27,7 @@ return new class extends Migration
     {
         Schema::table('requests_tbl', function (Blueprint $table) {
             $table->dropForeign('FK_requests_tbl_services_tbl');
+             $table->dropForeign('FK_requests_tbl_services_tbl_3');
             $table->dropForeign('FK_requests_tbl_status_table');
             $table->dropForeign('FK_requests_tbl_users_tbl');
             $table->dropForeign('FK_requests_tbl_users_tbl_2');

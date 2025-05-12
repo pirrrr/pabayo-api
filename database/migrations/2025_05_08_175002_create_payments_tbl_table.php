@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('payments_tbl', function (Blueprint $table) {
-            $table->integer('paymentID', true);
-            $table->integer('requestID')->index('fk_payments_tbl_requests_tbl');
-            $table->integer('userID')->index('fk_payments_tbl_users_tbl');
+            $table->unsignedBigInteger('paymentID', true);
+            $table->unsignedBigInteger('requestID')->index('fk_payments_tbl_requests_tbl');
+            $table->unsignedBigInteger('userID')->index('fk_payments_tbl_users_tbl');
             $table->decimal('amount', 10);
-            $table->integer('modeID')->index('fk_payments_tbl_paymentmethod_tbl');
-            $table->integer('paymentStatusID')->index('fk_payments_tbl_paymentstatus_tbl');
+            $table->unsignedBigInteger('modeID')->index('fk_payments_tbl_paymentmethod_tbl');
+            $table->unsignedBigInteger('paymentStatusID')->index('fk_payments_tbl_paymentstatus_tbl');
             $table->dateTime('paymentDate')->useCurrentOnUpdate()->useCurrent();
         });
     }

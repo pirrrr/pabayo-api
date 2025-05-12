@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('messages_tbl', function (Blueprint $table) {
-            $table->integer('messageID', true);
-            $table->integer('senderID')->index('fk__users_tbl');
-            $table->integer('receiverID')->index('fk_messages_tbl_users_tbl');
+            $table->unsignedBigInteger('messageID', true);
+            $table->unsignedBigInteger('senderID')->index('fk__users_tbl');
+            $table->unsignedBigInteger('receiverID')->index('fk_messages_tbl_users_tbl');
             $table->string('message', 250)->nullable();
             $table->boolean('isRead')->default(false);
             $table->dateTime('sentDate')->useCurrentOnUpdate()->useCurrent();

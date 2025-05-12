@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('status_tbl', function (Blueprint $table) {
-            $table->integer('statusID', true);
+            $table->unsignedBigInteger('statusID', true);
             $table->string('statusName', 50);
         });
     }

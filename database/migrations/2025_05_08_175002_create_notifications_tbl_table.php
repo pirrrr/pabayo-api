@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notifications_tbl', function (Blueprint $table) {
-            $table->integer('notificationID', true);
-            $table->integer('userID')->index('fk_notifications_tbl_users_tbl');
+            $table->unsignedBigInteger('notificationID', true);
+            $table->unsignedBigInteger('userID')->index('fk_notifications_tbl_users_tbl');
             $table->string('message', 150);
             $table->boolean('isRead')->default(false);
             $table->dateTime('dateCreated')->useCurrentOnUpdate()->useCurrent();

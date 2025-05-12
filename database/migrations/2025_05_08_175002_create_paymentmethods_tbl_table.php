@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('paymentmethods_tbl', function (Blueprint $table) {
-            $table->integer('modeID', true);
+            $table->unsignedBigInteger('modeID', true);
             $table->string('modeName', 50);
         });
     }
