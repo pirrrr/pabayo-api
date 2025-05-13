@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Service;
-
+use App\Models\User;
+use App\Models\Payment;
 
 class Request extends Model
 {
@@ -35,11 +36,12 @@ class Request extends Model
 
     public function service()
     {
-        return $this->belongsTO(Service::class, 'serviceID', 'serviceID');
+        return $this->belongsTo(Service::class, 'serviceID', 'serviceID');
     }
 
     public function payment()
     {
-        return $this->hasOne(Payment::class, 'requestID', 'requestID')->with('method');
+        return $this->hasOne(Payment::class, 'requestID', 'requestID');
     }
+
 }
